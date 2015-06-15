@@ -11,9 +11,4 @@ Compiling:
   Usage:
   ./muhkeatparit <filepath>
 
-  Also the corei7-avx is optional, but provides the best performance. Just used for counting some one bits.
-
-Some benchmark data:
-  asus eeepc 901        0.670s (clang without avx, very fast compared to the faster cpu's. Clear indication that I'm doing something wrong.)
-  i7-4770k 3,6ghz + ssd 0.075s (the most consistent result, visualstudio 2015 with avx)
-  i5-2520m + ssd        0.330s (clang + avx)
+Also the corei7-avx is optional, but provides the best performance. Just used for counting some one bits.
