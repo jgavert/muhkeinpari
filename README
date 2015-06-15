@@ -1,18 +1,23 @@
-Requires something like clang 3.4 or better, g++ 4.8 or better or visual studio 2015 rc
-
-Usage:
-./muhkeatparit <filepath>
-
-Also the corei7-avx is optional, but provides the best performance. Just used for counting some one bits.
+Releasing my own solution as the competition is already over and I didn't get anything.
+Also I haven't gotten any kind of mail about my answer so releasing it on my own accord.
+So I'm assuming that this is super bad answer with code quality that is worse than anything.
 
 Problem was to find the word pair that has the most unique characters, or pairs if there are more than one.
 
-Since I targetted for speed:
+Compiling:
+  Requires something like clang 3.4 or better, g++ 4.8 or better or visual studio 2015 rc
 
-asus eeepc				0.67s (clang without avx)
-i7-4770k 3,6ghz + ssd	0.08s (the most consistent result, visualstudio 2015 with avx)
-Adding laptop with i5-2520m and ssd result later.
+  Usage:
+  ./muhkeatparit <filepath>
+
+  Also the corei7-avx is optional, but provides the best performance. Just used for counting some one bits.
+
+Some benchmark data:
+  asus eeepc 901        0.670s (clang without avx, very fast compared to the faster cpu's. Clear indication that I'm doing something wrong.)
+  i7-4770k 3,6ghz + ssd 0.075s (the most consistent result, visualstudio 2015 with avx)
+  i5-2520m + ssd        0.330s (clang + avx)
 
 I'm overall happy with the algorithm of the solution, but the preprocess step is horrible and unbelievably fast. Why is utf-8 so ugly with c++! Limitations that I put was to only use what is found in std library. And rule for the solution was to take obviously less than second but not more than reading the file in. The solution was below 0.3s after I got my first correct solution. For most parts I didn't do any kind of optimizations. My only optimisation was to think that how to get the problem to be as small datawise and result of that was the fact that one int can hold all the necessary information needed. Code does rest of the explanation as It's written heavily with "code commentates itself". If it's unreadable, I guess I failed in the part where I tried to succeed. I thought of multithreading, but that would have made the solution far longer codewise than I would have preferred. As the solution takes even 80ms on relatively new cpu, there is lot to gain from multithreading as the processing of words could use some more memory bandwidth. Just one thread isn't enough these days.
 
-Also there apparently was faster c++ solution in the competetion than mine. Apparently clocked 0.2s which is supposed to be the fastest... wait that wasn't mentioned. "unbelievably fast hc c++ solution" to be correct. I'll update some post feelings about this once I know how fast it is on my laptop. 0.2s for problem that is about 1,5megs of size and word count of about 200k(solution is about O(n log n)) is somewhat slow.
+Also there apparently was faster c++ solution in the competetion than mine. Apparently clocked 0.2s which is supposed to be the fastest... wait that wasn't mentioned. "unbelievably fast hc c++ solution" to be correct. 0.2s for problem that is about 1,5megs of size and word count of about 200k(solution is about O(n log n)) is somewhat slow. And my laptop answers in 0.33s which is slow, I guess I'll have to look at rust if it has nice standard library to use threads.
+Nevertheless I accept defeat, I'll have to read more about memories and learn better code style so I naturally do the first idea which happens to be fast also. I believe that keeping memory and data structure in mind while designing algorithms don't make them any more complex. Clean code can be fucking fast.

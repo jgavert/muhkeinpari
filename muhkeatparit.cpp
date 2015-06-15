@@ -122,6 +122,7 @@ string utf8fy(string word)
 // Finding the muhkeimmat parit. Should be pretty good ratio with speed against code quality.
 int main(int argc, char* argv[])
 {
+  auto start_time = chrono::high_resolution_clock::now();
   if (argc < 2)
   {
     cerr << "Must give filepath as parameter." << endl;
@@ -211,10 +212,16 @@ int main(int argc, char* argv[])
       }
     }
   }
+  auto end_time = chrono::high_resolution_clock::now();
   // cout << "Found " << bestPairs.size() << " pairs:" << endl;
   for (auto&& pair : bestPairs)
   {
     cout << utf8fy(allWords[pair.first]) << " \t " << utf8fy(allWords[pair.second]) << endl;
   }
+  auto end_time2 = chrono::high_resolution_clock::now();
+  chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(end_time - start_time);
+  cout << "before print " << time_span.count() << " seconds." << endl;
+  time_span = chrono::duration_cast<chrono::duration<double>>(end_time2 - start_time);
+  cout << "whole thing " << time_span.count() << " seconds." << endl;
   return 0;
 }
